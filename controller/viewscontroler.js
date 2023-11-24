@@ -53,7 +53,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   const tourIds = await booking.map((el) => el.tour.id);
 
   const tours = await Tour.find({ _id: { $in: tourIds } });
-  console.log(tours);
+  // console.log(tours);
 
   res.status(200).render('overview', {
     title: 'All The Tours',
@@ -62,8 +62,8 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 });
 
 exports.updateUser = catchAsync(async (req, res, next) => {
-  console.log(req.body);
-  console.log(req.user);
+  // console.log(req.body);
+  // console.log(req.user);
 
   const updatedUser = await User.findByIdAndUpdate(
     req.user.id,
@@ -76,7 +76,8 @@ exports.updateUser = catchAsync(async (req, res, next) => {
       runValidators: true,
     }
   );
-  console.log(updatedUser);
+  // console.log(updatedUser);
+
   res.status(200).render('account', {
     title: 'Your Account',
     user: updatedUser,

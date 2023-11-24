@@ -89,7 +89,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   if (req.body.password || req.body.passwordConfirm)
     return next(

@@ -148,7 +148,7 @@ var _updateData = require("./updateData");
 var _mapbox = require("./mapbox");
 var _stripe = require("./stripe");
 var _alerts = require("./alerts");
-console.log("Hello world");
+// console.log('Hello world');
 const loginForm = document.querySelector(".form--login");
 const updateForm = document.querySelector(".form-user-data");
 const updateSettingF = document.querySelector(".form-user-settings");
@@ -34715,7 +34715,7 @@ var _alerts = require("./alerts");
 var _stripeJs = require("@stripe/stripe-js");
 const bookTour = async (tourId)=>{
     const stripe = await (0, _stripeJs.loadStripe)("pk_test_51O6dOSSJfU3feLnFqkAZTQ6V1yOmjYmI6p7bci6ZgpyJU54HXYIdsElT88fyvuRboZ5GeK3zYfkpA9FOYzpPNNZj00felEmlKT");
-    console.log(tourId);
+    // console.log(tourId);
     const response = await (0, _axiosDefault.default).get(`/api/v1/booking/checkout-session/${tourId}`);
     const session = response.data.session;
     await stripe.redirectToCheckout({

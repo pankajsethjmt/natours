@@ -9,7 +9,7 @@ import { displayMap } from './mapbox';
 import { bookTour } from './stripe';
 import { showAlert } from './alerts';
 
-console.log('Hello world');
+// console.log('Hello world');
 
 const loginForm = document.querySelector('.form--login');
 const updateForm = document.querySelector('.form-user-data');

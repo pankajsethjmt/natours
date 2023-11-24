@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParse = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utlis/appError');
 const globleErrorHandler = require('./controller/errorcontroler');
@@ -99,6 +100,8 @@ app.use('/api', limiter);
 if (process.env.NODE_ENV === 'devlopment') {
   app.use(morgon('dev'));
 }
+
+app.use(compression());
 
 app.use((req, res, next) => {
   req.reqTime = new Date().toISOString();

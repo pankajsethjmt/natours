@@ -32,7 +32,7 @@ exports.getAlldoc = (Model) =>
 exports.getOne = (Model, popOption) =>
   catchAsync(async (req, res, next) => {
     const query = Model.findById(req.params.id);
-    console.log(req.params.id);
+    // console.log(req.params.id);
 
     const doc = await query.populate(popOption);
 
