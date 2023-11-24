@@ -13,8 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "watch:js": "parcel ./public/js/index.js  --no-hmr --dist-dir ./public/js/bundle ",
-    "build:js": "parcel build ./public/js/index.js  --dist-dir ./public/js/bundle "
+    "watch:js": "parcel ./public/js/index.js  --no-hmr --dist-dir ./public/js/bundle",
+    "build:js": "parcel build ./public/js/index.js  --dist-dir ./public/js/bundle"
   },
   "author": "Pankaj Seth",
   "license": "ISC",
