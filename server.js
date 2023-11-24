@@ -24,7 +24,7 @@ async function main() {
 }
 main().catch((err) => console.log(err.name, err.message));
 
-const port = 3000;
-const server = app.listen(port, () =>
-  console.log(`App is Running on port: ${port}`)
+const Port = process.env.PORT || 3000;
+const server = app.listen(Port, () =>
+  console.log(`App is Running on port: ${Port}`)
 );
