@@ -1,7 +1,7 @@
 ////// require modules
 const path = require('path');
 const express = require('express');
-const morgon = require('morgan');
+const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -20,6 +20,8 @@ const bookingRouter = require('./route/bookingRouter');
 const viewsRouter = require('./route/viewsRouter');
 
 const app = express();
+
+app.enable('trust proxy');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -97,8 +99,8 @@ app.use(
 // Apply the rate limiting middleware to all requests
 app.use('/api', limiter);
 
-if (process.env.NODE_ENV === 'devlopment') {
-  app.use(morgon('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
 }
 
 app.use(compression());

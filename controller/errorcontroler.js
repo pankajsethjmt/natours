@@ -4,18 +4,22 @@ const handleCastErrorDb = (err) => {
   const message = `Invalid ${err.path} : ${err.value}`;
   return new AppError(message, 400);
 };
+
 const handleValidationErrorDb = (err) => {
   const message = `Please input Valid data. ${err.message}`;
   return new AppError(message, 401);
 };
+
 const handleJwtTokenError = (err) => {
   const message = `Please login with Valid Token. You have ${err.message}`;
   return new AppError(message, 401);
 };
+
 const handleJwtTokenExpiredError = (err) => {
   const message = `Your Token expired and Login Again. ${err.message}`;
   return new AppError(message, 401);
 };
+
 const handleDuplicateErrorDb = (err) => {
   const key = { ...Object.keys(err.keyValue) };
   const value = { ...Object.values(err.keyValue) };
