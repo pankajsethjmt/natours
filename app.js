@@ -9,6 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParse = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utlis/appError');
 const globleErrorHandler = require('./controller/errorcontroler');
@@ -22,6 +23,9 @@ const viewsRouter = require('./route/viewsRouter');
 const app = express();
 
 app.enable('trust proxy');
+
+app.use(cors());
+app.options('*', cors());
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
