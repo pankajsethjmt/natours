@@ -18,6 +18,7 @@ const tourRouter = require('./route/tourRouter');
 const userRouter = require('./route/userRouter');
 const reviewRouter = require('./route/reviewRouter');
 const bookingRouter = require('./route/bookingRouter');
+const bookingControler = require('./controller/bookingControler');
 const viewsRouter = require('./route/viewsRouter');
 
 const app = express();
@@ -83,6 +84,13 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingControler.webhookCheckout
+);
+
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParse());
