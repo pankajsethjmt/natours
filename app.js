@@ -12,7 +12,7 @@ const compression = require('compression');
 const cors = require('cors');
 
 const AppError = require('./utlis/appError');
-const globleErrorHandler = require('./controller/errorcontroler');
+const globleErrorHandler = require('./controller/errorControler');
 
 const tourRouter = require('./route/tourRouter');
 const userRouter = require('./route/userRouter');

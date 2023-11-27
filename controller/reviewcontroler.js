@@ -4,7 +4,7 @@ const Review = require('../modal/reviewModal');
 const AppError = require('../utlis/appError');
 const ApiFeature = require('../utlis/appFeature');
 const catchAsync = require('../utlis/catchAsync');
-const factory = require('./handlorFactory');
+const factory = require('./handlerFactory');
 
 exports.setTourUserIds = (req, res, next) => {
   // Allow nested routes
@@ -13,10 +13,9 @@ exports.setTourUserIds = (req, res, next) => {
   next();
 };
 
-
 exports.isOwner = factory.isOwner(Review, 'user');
 
-exports.getAllReviews = factory.getAlldoc(Review);
+exports.getAllReviews = factory.getAllDoc(Review);
 exports.getReviews = factory.getOne(Review);
 exports.creatReview = factory.createOne(Review);
 exports.updateReview = factory.updateOne(Review);

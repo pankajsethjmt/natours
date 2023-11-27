@@ -1,14 +1,18 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const factory = require('./handlorFactory');
+const factory = require('./handlerFactory');
+
 const Tour = require('../modal/tourModal');
 
 const Booking = require('../modal/bookingModal');
 
 const catchAsync = require('../utlis/catchAsync');
 const User = require('../modal/userModal');
+const AppError = require('./errorControler');
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourId);
+
+  if (!tour) return next(new AppError('Tour not found!', 404));
 
   const product = await stripe.products.create({
     name: `${tour.name} Tour`,
@@ -26,7 +30,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
 
-    success_url: `${req.protocol}://${req.get('host')}/webhook-checkout`,
+    success_url: `${req.protocol}://${req.get('host')}/my-tours`,
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
@@ -73,7 +77,7 @@ exports.webhookCheckout = (req, res) => {
   res.status(200).json({ received: true });
 };
 
-exports.getAllBookings = factory.getAlldoc(Booking);
+exports.getAllBookings = factory.getAllDoc(Booking);
 exports.getBookings = factory.getOne(Booking);
 exports.createBooking = factory.createOne(Booking);
 exports.updateBooking = factory.updateOne(Booking);

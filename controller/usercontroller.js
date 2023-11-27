@@ -4,7 +4,7 @@ const sharp = require('sharp');
 const User = require('../modal/userModal');
 const catchAsync = require('../utlis/catchAsync');
 const AppError = require('../utlis/appError');
-const factory = require('./handlorFactory');
+const factory = require('./handlerFactory');
 
 // const multerPhotoStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -50,7 +50,7 @@ const filterObject = (obj, ...allowedfileds) => {
   return newObj;
 };
 
-exports.getAllUsers = factory.getAlldoc(User);
+exports.getAllUsers = factory.getAllDoc(User);
 
 exports.getUser = factory.getOne(User);
 
@@ -62,7 +62,7 @@ exports.deleteUser = factory.deleteOne(User);
 // exports.getAllUsers = catchAsync(async (req, res, next) => {
 //   const users = await User.find();
 //   res.status(200).json({
-//     status: 'sucess',
+//     status: 'success',
 //     results: users.length,
 
 //     data: {

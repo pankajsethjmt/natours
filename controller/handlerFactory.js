@@ -3,7 +3,7 @@ const catchAsync = require('../utlis/catchAsync');
 const AppError = require('../utlis/appError');
 const ApiFeature = require('../utlis/appFeature');
 
-exports.getAlldoc = (Model) =>
+exports.getAllDoc = (Model) =>
   catchAsync(async (req, res, next) => {
     let queryStr;
     if (req.params.tourId) {
@@ -21,7 +21,7 @@ exports.getAlldoc = (Model) =>
       .pagination();
     const doc = await feature.query;
     res.status(200).json({
-      status: 'Sucess',
+      status: 'Success',
       results: doc.length,
       data: {
         data: doc,
@@ -43,7 +43,7 @@ exports.getOne = (Model, popOption) =>
     }
 
     res.status(200).json({
-      status: 'Sucess',
+      status: 'Success',
 
       data: {
         data: doc,
@@ -79,7 +79,7 @@ exports.updateOne = (Model) =>
       );
     }
     res.status(200).json({
-      status: 'Sucess',
+      status: 'Success',
 
       data: {
         data: doc,
@@ -91,11 +91,11 @@ exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
     if (!req.body)
       return next(
-        new AppError('No inpute data recived to create documents', 400)
+        new AppError('No input data received to create documents', 400)
       );
     const doc = await Model.create(req.body);
     res.status(201).json({
-      message: 'sucess',
+      message: 'success',
       data: {
         data: doc,
       },

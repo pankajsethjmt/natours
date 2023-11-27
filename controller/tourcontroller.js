@@ -6,7 +6,7 @@ const Tour = require('../modal/tourModal');
 const AppError = require('../utlis/appError');
 const ApiFeature = require('../utlis/appFeature');
 const catchAsync = require('../utlis/catchAsync');
-const factory = require('./handlorFactory');
+const factory = require('./handlerFactory');
 
 const multerPhotoStorage = multer.memoryStorage();
 
@@ -67,7 +67,7 @@ exports.aliasTopTours = (req, res, next) => {
   next();
 };
 
-exports.getAllTours = factory.getAlldoc(Tour);
+exports.getAllTours = factory.getAllDoc(Tour);
 
 exports.getTour = factory.getOne(Tour, {
   path: 'reviews',
@@ -338,7 +338,7 @@ exports.getTourDistance = catchAsync(async (req, res, next) => {
 //   const newTour = await Tour.create(req.body);
 
 //   res.status(201).json({
-//     message: 'sucess',
+//     message: 'success',
 //     data: {
 //       tour: newTour,
 //     },
